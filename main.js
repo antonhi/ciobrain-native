@@ -2,8 +2,9 @@
 const {app, BrowserWindow} = require('electron')
 const path = require('path')
 
-const { spawn } = require('child_process');
+const { spawn, fork } = require('child_process');
 spawn('npm', ['run', 'start']);
+fork(`${__dirname}/api/index`);
 
 function createWindow () {
 
@@ -17,10 +18,10 @@ function createWindow () {
 
   mainWindow.loadURL('http://localhost:3000').catch(e => {
       setTimeout(() => {
-        mainWindow.loadURL('http://localhost:3000')
-      }, 1000).catch(e => {
-          app.quit();
-      });
+        mainWindow.loadURL('http://localhost:3000').catch(e => {
+            app.quit();
+        });
+      }, 2000)
   });
 
 }
@@ -30,7 +31,9 @@ app.whenReady().then(() => {
 });
 
 app.on('window-all-closed', function () {
-  spawn('npm', ['run', 'stop']).on('exit', () => {
-    app.quit();
+  spawn('npm', ['run', 'stop-front-end']).on('exit', () => {
+      spawn('npm', ['run', 'stop-back-end']).on('exit', () => {
+          app.quit();
+      });
   });
 });
