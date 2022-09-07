@@ -44,8 +44,6 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "app": "electron .",
-    "stop-front-end": "npx kill-port 3000",
-    "stop-back-end": "npx kill-port 3001",
     "electron:start": "concurrently -k \"cross-env BROWSER=none yarn start\" \"wait-on http://localhost:3000 && npm run app\"",
     "electron:package:mac": "yarn build && electron-builder -m -c.extraMetadata.main=build/main.js",
     "electron:package:win": "yarn build && electron-builder -w -c.extraMetadata.main=build/main.js",
@@ -85,7 +83,7 @@
       "target": "dmg"
     },
     "win": {
-      "target": "nsis"
+      "target": "msi"
     },
     "linux": {
       "target": "deb"
