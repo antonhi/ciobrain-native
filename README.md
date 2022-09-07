@@ -11,5 +11,5 @@ CIOBrain Native leverages Electron to combine CIOBrain and CIOBrain API into a s
 ![Copying repo link](https://i.imgur.com/ECjo66R.png)
 2. In your terminal, navigate to a directory on your computer where you would like the project to be located at. Run `git clone https://github.com/antonhi/ciobrain-native.git`.
 3. Run `cd ciobrain-native && yarn` to install dependencies.
-4. Package the application based on a target platform. `yarn electron:package:mac`, `electron:package:win`, and `electron:package:linux` will build an installer for the application based on each platform. Run one of these commands in your terminal to create a distribution directory with the installer inside.
+4. Package the application based on a target platform. `yarn electron:package:mac`, `yarn electron:package:win`, and `yarn electron:package:linux` will build an installer for the application based on each platform. Run one of these commands in your terminal to create a distribution directory with the installer inside.
 5. Once the installer has been created, it will be located in the `dist` directory. You can then install and run the application as normal.
