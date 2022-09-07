@@ -9,8 +9,10 @@ CIOBrain Native leverages Electron to combine CIOBrain and CIOBrain API into a s
 
 1. Clone this repository by clicking the green **Code** button and tapping the copy button next to the repo link.
 ![Copying repo link](https://i.imgur.com/ECjo66R.png)
-2. Run the `npm install` command on this project. This can be done by navigating a terminal window to have its current directory be the root folder of this project, then running the command.
-3. Run the `npm start` command on this project.
+2. In your terminal, navigate to a directory on your computer where you would like the project to be located at. Run > "git clone https://github.com/antonhi/ciobrain-native.git".
+3. 
+4. Run the `npm install` command on this project. This can be done by navigating a terminal window to have its current directory be the root folder of this project, then running the command.
+5. Run the `npm start` command on this project.
 
 ## Deployment
 
