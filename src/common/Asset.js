@@ -1,10 +1,7 @@
 import axios from "axios"
 import { AssetCategoryEnum } from "../components/AssetCategoryEnum.js"
 
-const URL =
-    process.env.NODE_ENV === "development"
-        ? "http://localhost:3001/asset"
-        : "https://ciobrainapi.azurewebsites.net/asset"
+const URL = 'http://localhost:3001/asset';
 const api = axios.create({ baseURL: URL })
 
 const get = async url => {

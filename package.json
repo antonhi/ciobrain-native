@@ -2,9 +2,11 @@
   "name": "ciobrain",
   "version": "0.1.0",
   "private": true,
-  "main": "main.js",
+  "main": "./public/main.js",
+  "homepage": "./",
+  "author": "Team #6",
+  "description": "Best app ever",
   "dependencies": {
-    "@microsoft/edge-selenium-tools": "^3.6.1",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
@@ -13,11 +15,11 @@
     "cors": "^2.8.5",
     "d3": "^7.0.3",
     "dotenv": "^11.0.0",
-    "electron-packager": "^16.0.0",
     "esm": "^3.2.25",
     "express": "^4.18.1",
     "find-process": "^1.4.7",
     "geckodriver": "^2.0.4",
+    "kill-port": "^2.0.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "reactjs-popup": "^2.0.5",
@@ -26,10 +28,14 @@
     "xlsx": "^0.17.5"
   },
   "devDependencies": {
+    "concurrently": "^7.4.0",
+    "cross-env": "^7.0.3",
     "electron": "^20.1.1",
-    "electron-winstaller": "^5.0.0",
+    "electron-builder": "^23.3.3",
     "electron-wix-msi": "^4.0.0",
-    "react-scripts": "4.0.3"
+    "electronmon": "^2.0.2",
+    "react-scripts": "4.0.3",
+    "wait-on": "^6.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -39,7 +45,11 @@
     "eject": "react-scripts eject",
     "app": "electron .",
     "stop-front-end": "npx kill-port 3000",
-    "stop-back-end": "npx kill-port 3001"
+    "stop-back-end": "npx kill-port 3001",
+    "electron:start": "concurrently -k \"cross-env BROWSER=none yarn start\" \"wait-on http://localhost:3000 && npm run app\"",
+    "electron:package:mac": "yarn build && electron-builder -m -c.extraMetadata.main=build/main.js",
+    "electron:package:win": "yarn build && electron-builder -w -c.extraMetadata.main=build/main.js",
+    "electron:package:linux": "yarn build && electron-builder -l -c.extraMetadata.main=build/main.js"
   },
   "eslintConfig": {
     "extends": [
@@ -49,14 +59,36 @@
   },
   "browserslist": {
     "production": [
+      "last 1 electron version",
       ">0.2%",
       "not dead",
       "not op_mini all"
     ],
     "development": [
+      "last 1 electron version",
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "build": {
+    "appId": "com.team6.ciobrain",
+    "productName": "CIOBrain",
+    "files": [
+      "build/**/*",
+      "node_modules/**/*"
+    ],
+    "directories": {
+      "buildResources": "public"
+    },
+    "mac": {
+      "target": "dmg"
+    },
+    "win": {
+      "target": "nsis"
+    },
+    "linux": {
+      "target": "deb"
+    }
   }
 }
