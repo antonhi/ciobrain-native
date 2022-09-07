@@ -8,7 +8,7 @@ CIOBrain Native leverages Electron to combine CIOBrain and CIOBrain API into a s
 [Yarn](https://classic.yarnpkg.com/lang/en/docs/install/) is recommended to install dependencies.
 
 1. Clone this repository by clicking the green **Code** button and tapping the copy button next to the repo link.
-![Copying repo link](https://imgur.com/j4ffnnv)
+![Copying repo link](https://i.imgur.com/ECjo66R.png)
 2. Run the `npm install` command on this project. This can be done by navigating a terminal window to have its current directory be the root folder of this project, then running the command.
 3. Run the `npm start` command on this project.
 
