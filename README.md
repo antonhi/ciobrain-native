@@ -1,6 +1,6 @@
 # CIOBrain Native
 
-CIOBrain Native leverages Electron to combine CIOBrain and CIOBrain API into a single Desktop application.
+CIOBrain Native leverages Electron to combine CIOBrain and CIOBrain API into a single Desktop application. Build installers for Mac, Windows, and Linux.
 
 ## Create CIOBrain Installer
 
