@@ -71,7 +71,7 @@
   },
   "build": {
     "appId": "com.team6.ciobrain",
-    "productName": "CIOBrain",
+    "productName": "CIOBrain Trial v3",
     "files": [
       "build/**/*",
       "node_modules/**/*"
