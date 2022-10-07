@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import AssetCategoryOption from "./AssetCategoryOption"
 import { AssetCategoryEnum } from "../AssetCategoryEnum"
 import AssetImport from "../AssetImport/AssetImport.js"
+import AssetTransfer from "../AssetTransfer/AssetTransfer"
 
 export default class AssetMenu extends Component {
     constructor(props) {
@@ -27,6 +28,7 @@ export default class AssetMenu extends Component {
                 <div id="assetMenuHeader">
                     <div>Assets</div>
                     <AssetImport />
+                    <AssetTransfer />
                 </div>
                 {Object.values(AssetCategoryEnum).map(category => (
                     <AssetCategoryOption
