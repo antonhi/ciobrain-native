@@ -20,6 +20,15 @@ const post = async (url, data) => {
     }
 }
 
+const postURL = async (url, category, data) => {
+    const server = axios.create({ baseURL: url })
+    try {
+        return (await server.post(`/asset/${category}`, data)).data
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 export const getAssetById = async (category, id) =>
     await get(`/${category}/${id}`)
 
@@ -31,6 +40,10 @@ export const getAllAssetsForCategory = async category =>
 
 export const pushAssets = async (category, assets) =>
     await post(`/${category}`, assets)
+
+export const pushAssetsWithUrlPassword = async (category, assets, url, password) => {
+    return await postURL(url, category, {password: password, data: assets})
+}
 
 export const getAllAssets = async () =>
     (

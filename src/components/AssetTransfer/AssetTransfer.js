@@ -1,5 +1,7 @@
+import { thresholdFreedmanDiaconis } from "d3"
 import { Component } from "react"
 import Popup from "reactjs-popup"
+import transfer from "./Transfer"
 
 const CONTACT_API_ERROR = "Could not contact API Server at URL"
 const API_AUTHENTICATION_ERROR = "Could not authenticate using password"
@@ -45,14 +47,16 @@ export default class AssetTransfer extends Component {
             this.setState({ category: null, asset: null, result: null })
         }
 
-        const submit = event => {
+        const submit = async event => {
             event.preventDefault()
             const url = document.getElementById('Azure-API-URL').value;
-            console.log(url);
-            this.setState({result: {error: CONTACT_API_ERROR}})
-            /*this.pushAssets().then(result => {
-                this.setState({ result: result })
-            })*/
+            const password = document.getElementById('Azure-API-Password').value
+            const result = await transfer(url, password);
+            if (!result) {
+                this.setState({result: {error: CONTACT_API_ERROR}})
+            } else {
+                this.setState({result: result})
+            }
         }
 
         const validateResult = () => {
@@ -112,18 +116,12 @@ export default class AssetTransfer extends Component {
                             placeholder="Azure API URL"
                             style={{ width: "33.34%", margin: "auto" }}
                             id="Azure-API-URL"
-                            onChange={event =>
-                                console.log(event)
-                            }
                         />
                         <input
                             type="password"
                             placeholder="API Password"
                             style={{ width: "33.34%", margin: "auto" }}
                             id="Azure-API-Password"
-                            onChange={event =>
-                                console.log(event)
-                            }
                         />
                         <input 
                             type="submit"
