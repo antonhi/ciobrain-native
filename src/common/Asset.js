@@ -23,9 +23,9 @@ const post = async (url, data) => {
 const postURL = async (url, category, data) => {
     const server = axios.create({ baseURL: url })
     try {
-        return (await server.post(`/asset/${category}`, data)).data
+        return await server.post(`/asset/${category}`, data);
     } catch (error) {
-        console.log(error)
+        return {status: 401};
     }
 }
 

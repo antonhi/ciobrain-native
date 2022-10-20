@@ -1,10 +1,6 @@
-import { thresholdFreedmanDiaconis } from "d3"
 import { Component } from "react"
 import Popup from "reactjs-popup"
 import transfer from "./Transfer"
-
-const CONTACT_API_ERROR = "Could not contact API Server at URL"
-const API_AUTHENTICATION_ERROR = "Could not authenticate using password"
 
 const modalStyle = {
     maxWidth: "600px",
@@ -52,11 +48,7 @@ export default class AssetTransfer extends Component {
             const url = document.getElementById('Azure-API-URL').value;
             const password = document.getElementById('Azure-API-Password').value
             const result = await transfer(url, password);
-            if (!result) {
-                this.setState({result: {error: CONTACT_API_ERROR}})
-            } else {
-                this.setState({result: result})
-            }
+            this.setState({result: result});
         }
 
         const validateResult = () => {
